@@ -49,7 +49,8 @@ public class PokemonService {
             }
         }
         return result;
-      
+    }
+    
     public void create(Pokemon pokemon) {
         pokemonRepository.create(pokemon);
     }
