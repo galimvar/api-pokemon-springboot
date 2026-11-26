@@ -47,4 +47,12 @@ public class PokemonController {
         service.create(pokemon);
         return ResponseEntity.status(HttpStatus.CREATED).body(pokemon);
     }
+
+    @DeleteMapping ("/pokemon/{name}")
+    public ResponseEntity<?> deletePokemon(@PathVariable String name){
+        if(service.deletePokemon(name)){
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Map.of("error", "Pokemon " + name + " introuvable"));
+    }
 }

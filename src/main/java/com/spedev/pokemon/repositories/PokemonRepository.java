@@ -29,4 +29,8 @@ public class PokemonRepository {
     public void create(Pokemon pokemon) {
         pokemons.add(pokemon);
     }
+
+    public  void delete(Pokemon pokemon){
+        pokemons.remove(pokemon);
+    }
 }
