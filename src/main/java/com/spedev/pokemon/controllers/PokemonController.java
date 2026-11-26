@@ -25,11 +25,21 @@ public class PokemonController {
         this.service = service;
     }
 
+    // pokemon?name=pikachu
+    // pokemon?type=electrique
     @GetMapping ("/pokemon")
-    public Map<String, List<Pokemon>> pokemon(  @RequestParam (required = false) String name,
-                                                @RequestParam (required = false) String type,
-                                                @RequestParam (required = false) String attaque ){
-        return Map.of("status", service.findAll());                                                
+    public Map<String, List<Pokemon>> pokemon(  @RequestParam (required = false) String name, @RequestParam (required = false) String type, @RequestParam (required = false) String attaque ){
+        
+        if (name != null && type == null) {
+            return Map.of("status", service.findByName(name));
+        } else if (name == null && type != null) {
+            return Map.of("status", service.findByType(type));
+        } else if (name != null && type != null) {
+            return Map.of("status", service.findByNameAndType(name, type));
+        }
+        
+        return Map.of("status", service.findAll());  
+        
     }
 
     @PostMapping("/pokemon/")
