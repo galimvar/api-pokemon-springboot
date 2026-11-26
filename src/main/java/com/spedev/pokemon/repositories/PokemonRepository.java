@@ -25,4 +25,8 @@ public class PokemonRepository {
     public List<Pokemon> findAll() {
         return pokemons;
     }
+
+    public void create(Pokemon pokemon) {
+        pokemons.add(pokemon);
+    }
 }
