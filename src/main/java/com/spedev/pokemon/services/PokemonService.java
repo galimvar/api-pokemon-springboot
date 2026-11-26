@@ -1,5 +1,6 @@
 package com.spedev.pokemon.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class PokemonService {
     public List<Pokemon> findByName(String nom) {
         List<Pokemon> result = new ArrayList<>();
         for (Pokemon pokemon : pokemonRepository.findAll()) {
-            if (pokemon.getName().toLowercase().contains(nom.toLowercase())) {
+            if (pokemon.getNom().toLowerCase().contains(nom.toLowerCase())) {
                 result.add(pokemon);
             }
         }
@@ -33,7 +34,7 @@ public class PokemonService {
     public List<Pokemon> findByType(String type) {
                 List<Pokemon> result = new ArrayList<>();
         for (Pokemon pokemon : pokemonRepository.findAll()) {
-            if (pokemon.getType().toLowercase().contains(type.toLowercase())) {
+            if (pokemon.getType().toLowerCase().contains(type.toLowerCase())) {
                 result.add(pokemon);
             }
         }
@@ -43,7 +44,7 @@ public class PokemonService {
     public List<Pokemon> findByNameAndType(String nom, String type) {
         List<Pokemon> result = new ArrayList<>();
                 for (Pokemon pokemon : pokemonRepository.findAll()) {
-            if (pokemon.getName().toLowerCase().contains(nom.toLowerCase()) && pokemon.getType().contains(type.toLowercase())) {
+            if (pokemon.getNom().toLowerCase().contains(nom.toLowerCase()) && pokemon.getType().contains(type.toLowerCase())) {
                 result.add(pokemon);
             }
         }
