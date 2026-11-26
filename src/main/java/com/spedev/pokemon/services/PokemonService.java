@@ -19,4 +19,34 @@ public class PokemonService {
     public List<Pokemon> findAll() {
         return pokemonRepository.findAll();
     }
+
+    public List<Pokemon> findByName(String nom) {
+        List<Pokemon> result = new ArrayList<>();
+        for (Pokemon pokemon : pokemonRepository.findAll()) {
+            if (pokemon.getName().toLowercase().contains(nom.toLowercase())) {
+                result.add(pokemon);
+            }
+        }
+        return result;
+    }
+
+    public List<Pokemon> findByType(String type) {
+                List<Pokemon> result = new ArrayList<>();
+        for (Pokemon pokemon : pokemonRepository.findAll()) {
+            if (pokemon.getType().toLowercase().contains(type.toLowercase())) {
+                result.add(pokemon);
+            }
+        }
+        return result;
+    }
+
+    public List<Pokemon> findByNameAndType(String nom, String type) {
+        List<Pokemon> result = new ArrayList<>();
+                for (Pokemon pokemon : pokemonRepository.findAll()) {
+            if (pokemon.getName().toLowerCase().contains(nom.toLowerCase()) && pokemon.getType().contains(type.toLowercase())) {
+                result.add(pokemon);
+            }
+        }
+        return result;
+    }
 }
