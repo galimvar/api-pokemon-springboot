@@ -19,4 +19,8 @@ public class PokemonService {
     public List<Pokemon> findAll() {
         return pokemonRepository.findAll();
     }
+
+    public void create(Pokemon pokemon) {
+        pokemonRepository.create(pokemon);
+    }
 }
